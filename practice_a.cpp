@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdarg.h>
 // 以下やりたいこと
 // なるべくシステムコールで関数自作
-// 足し算関数を作る
+// 引数の個数の変化に対応する足し算関数を作る
 // 文字型化関数を作る
 // 文字列表示関数を作る
 
@@ -16,13 +17,40 @@ int	my_strlen(char str[])
 	return (len);
 }
 
-int	calc_add(int a, int b, int c)
+	//void func(char *arg_1, ...)
+int calc_add(int num_of_arg, int num1, ...)
 {
-	int i = 0;
 	int sum = 0;
-	sum = a + b + c;
-	return (sum);
+	va_list ap;
+	//va_start(ap, arg_1);
+	va_start(ap, num1);
+	printf("sum = %d\n", sum);
+	printf("num1: %d\n", num1);
+	//printf("num1: %d\n", va_start(ap, num1));
+	//printf("arg_2: %d\n", va_arg(ap, int));
+	//printf("arg_3: %lf\n", va_arg(ap, double));
+	//printf("nun1: %d\n", va_arg(ap, int));
+	sum = sum + num1;
+	int i = 0;
+	num_of_arg =  num_of_arg - 1;
+	while (i < num_of_arg)
+	{
+		sum = sum + va_arg(ap, int);
+		//printf("num%d = num");
+		i++;
+	}
+	printf("num2: %d\n", va_arg(ap, int));
+	//printf("num3: %d\n", va_arg(ap, int));
+	//sum = num1 + va_arg(ap, int) + va_arg(ap, int);
+	//sum = va_arg(ap, int);
+	//sum = num1;
+	//sum = (va_arg(ap, int));
+	printf("sum = %d\n", sum);
+	//sum = sum;
+	return sum;
 }
+
+
 
 void	num_to_char(int ans)
 {

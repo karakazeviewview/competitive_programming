@@ -1,4 +1,3 @@
-// shift only
 /*
 #include <stdio.h>
 int main(void)
@@ -34,79 +33,61 @@ int main(void)
 	return (0);
 }
 
-200個以下のint型N個の数A [i] が来る
-				A[i] はint型で10億以下
-				scanf() で
+200個以下のint型N個の、整数A[i]が来る
+A[i]はint型で10億以下の整数
+scanf()で受け取る
 
-個数N== A[0]
+個数N==A[0]である、とは考えない
 
 int i
 int N
 int A[i]
-int Ncp
-
 */
 
 #include <stdio.h>
 
 int main(void)
 {
-
-	int so1 = 0;
-	int so2 = 0;
+	int hierarchy1;
+	int hierarchy2;
 	int N;
 	int A[201];
-	int Ncp;
-	int counter = 0;
-	int flag = 0;
-	int i = 0;
+	int counter;
+	int flag;
+	int i;
 
-	so1 = 0;
-	so2 = 0;
+	hierarchy1 = 0;
+	hierarchy2 = 0;
+	N = 0;
+	counter = 0;
+	flag = 0;
+	i = 0;
 	scanf("%d", &N);
-	//printf("N = %d\n", N);
 	while (i < N)
 	{
-		//printf("N = %d\n", N);
 		scanf("%d", &A[i]);
-		//printf("%d\n", A[i]);
 		i++;
 	}
-	Ncp = N;
-	so2 = 0;
 	while (flag == 0)
 	{
-		so2 = 0;
-		// if (flag == 0)
-		// if (1)
-		//{
-		while (so2 <  N)
+		hierarchy2 = 0;
+		while (hierarchy2 < N)
 		{
-			//if (flag == 0 && (A[so2] % 2 != 0))
-			//{
-				//flag = 1;
-			//}
-			// if (A[so2] % 2 == 0 && flag == 0)
 			if (flag == 1)
 			{
 				break;
 			}
-			if (flag == 0 && (A[so2] % 2 == 0))
+			if (flag == 0 && (A[hierarchy2] % 2 == 0))
 			{
-				A[so2] = A[so2] / 2;
-				//printf("A[%d] = %d\n",so2, A[so2]);
+				A[hierarchy2] = A[hierarchy2] / 2;
 			}
 			else
 			{
 				flag = 1;
 			}
-			so2++;
-			//}
-			//printf("res = %d\n", counter);
+			hierarchy2++;
 		}
-  	//printf("counter = %d\n", counter);
-	
-		so1++;
+		hierarchy1++;
 		counter++;
 	}
 	printf("%d", counter - 1);
